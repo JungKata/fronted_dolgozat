@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Container, Navbar } from 'react-bootstrap';
 
-function App() {
+import Fooldal from './Fooldal';
+import Tapasztalat from './Tapasztalat';
+import { KapcsolatFelvetel } from './Kapcsolatfelvetel';
+
+class App extends Component{
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <Navbar>
+      <Container>
+        <Link to={'/'}>Főoldal</Link>
+        <Link to={'/tapasztalat'}>Szakmai tapasztalat</Link>
+        <Link to={'/idopont'}>Időpont foglalás</Link>
+      </Container>
+    </Navbar>
+  
+
+
+    
+    <footer>
+      <p>Jung Katalin</p>
+    </footer>
+    <main>
+      <Routes>
+        <Route path='/'element={<Fooldal/>}></Route>
+        <Route path='/tapasztalat' element={<Tapasztalat/>}></Route>
+        <Route path='/idopont' element={<KapcsolatFelvetel/>}></Route>        
+      </Routes>
+    </main>
+  </div>
   );
+}
 }
 
 export default App;
